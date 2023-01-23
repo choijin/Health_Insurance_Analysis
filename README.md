@@ -2,7 +2,7 @@
 
 Collorated work with Jin Choi, Shih-Lun Huang, Wei-Han Hsu
 
-Click [this link](https://www.kaggle.com/datasets/tejashvi14/medical-insurance-premium-prediction) to get the data file.
+Click [HERE](https://www.kaggle.com/datasets/tejashvi14/medical-insurance-premium-prediction) to get the data source
 
 You can see the full and detailed script [HERE](https://github.com/choijin/Health_Insurance_Analysis/blob/main/src/DSGA1001_IDS_Capstone.ipynb)
 
