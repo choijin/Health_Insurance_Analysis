@@ -68,8 +68,6 @@ The result shows that the optimal number of principal components is 2, which exp
 
 After obtaining the PCA-transformed data, Silhouette Score is implemented to compute the optimal number of clusters to apply in the KMeans approach. The result (Figure 7) shows that a clustering model with 2 clusters performs the best with an average silhouette score of 0.405.
 
-To answer the Diabetes Classification question, we apply the XGBoost method to create a decision tree classifier. XGBoost contains a series of hyperparameters. To reach the optimal model without much knowledge regarding the healthcare and insurance industries, we perform the grid search cross-validation of each hyperparameter according to the recommended intervals. 
-
 | ![](/images/silhouette_score.png) | 
 |:--:| 
 | *Figure 8* |
@@ -78,11 +76,21 @@ To answer the Diabetes Classification question, we apply the XGBoost method to c
 |:--:| 
 | *Figure 9* |
 
+To answer the Diabetes Classification question, we apply the XGBoost method to create a decision tree classifier. XGBoost contains a series of hyperparameters. To reach the optimal model without much knowledge regarding the healthcare and insurance industries, we perform the grid search cross-validation of each hyperparameter according to the recommended intervals. 
+
+| ![](/images/confusion.png) | 
+|:--:| 
+| *Figure 10* |
+
+| ![](/images/roc.png) | 
+|:--:| 
+| *Figure 11* |
+
 The optimal classifier consists of features with distinct weights shown below.
 
 | ![](/images/classification_result.png) | 
 |:--:| 
-| *Figure 10* |
+| *Figure 12* |
 
 From the scatter plot obtained by the KMeans clustering, we see that there exist two groups of people determined by all features except Diabetes which may be used to determine whether or not a person has diabetes. The classification model helps put our assumption to test. However, the area under ROC curve value of 0.6511 implies that our model is not robust enough to corroborate our assumption.
 
