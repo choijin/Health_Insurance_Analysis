@@ -6,7 +6,7 @@ Click [this link](https://www.kaggle.com/datasets/tejashvi14/medical-insurance-p
 
 You can see the full and detailed script [HERE](https://github.com/choijin/Health_Insurance_Analysis/blob/main/src/DSGA1001_IDS_Capstone.ipynb)
 
-### Project Overview
+## Project Overview
 * Conduct power analysis and hypothesis testing to identify any relationship between the premium price and age, surgery history, existence of diabetes, and chronic disease history. 
 * Compare LASSO regression, Ridge regression, and Elastic net regression to identify the regularized regression model that will perform the best to predict the premium price for the health insurance data.
 * Perform Principal Component Analysis (PCA), K-Mean's clustering and XGBoost classifier to create the decision tree to determine one’s diabetes status. 
