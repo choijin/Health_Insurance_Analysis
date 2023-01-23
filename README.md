@@ -24,7 +24,9 @@ Parsed the data to create two distinct distributions per each of the four featur
 
 Looking at Figure 1, the mean premium price for the two distributions are far apart, without any overlaps of the confidence intervals. After conducting Welch's t-test on distributions of ages above 50 and below 50, the p-value was 5.584x10-82. Since this value is smaller than the alpha value (.05), we reject the null hypothesis and conclude that age group has influence on the premium price. Similarly, the p-values for Welch’s t-test on distributions of presence of chronic disease (Figure 2) and surgery history (Figure 3) are 1.73x10-13, 1.6x10-11, respectively. For either case, we reject the null hypothesis since the p-values are far less than the alpha level, thus we conclude that presence of chronic disease and surgery history are influential in the premium price.
 
-
+| ![](/images/age%20distribution.png) | 
+|:--:| 
+| *Figure 1* |
   
 ![](/images/age%20distribution.png)
 *Figure 1*
