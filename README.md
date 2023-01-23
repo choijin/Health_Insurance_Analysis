@@ -4,7 +4,7 @@ Collorated work with Jin Choi, Shih-Lun Huang, Wei-Han Hsu
 
 Click [HERE](https://www.kaggle.com/datasets/tejashvi14/medical-insurance-premium-prediction) to get the data source
 
-You can see the full and detailed script [HERE](https://github.com/choijin/Health_Insurance_Analysis/blob/main/src/DSGA1001_IDS_Capstone.ipynb)
+Click [HERE](https://github.com/choijin/Health_Insurance_Analysis/blob/main/src/DSGA1001_IDS_Capstone.ipynb) to see the full and detailed script
 
 ## Project Overview
 * Conduct power analysis and hypothesis testing to identify any relationship between the premium price and age, surgery history, existence of diabetes, and chronic disease history. 
