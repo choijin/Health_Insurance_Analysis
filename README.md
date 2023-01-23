@@ -11,34 +11,34 @@ You can see the full and detailed script [HERE](https://github.com/choijin/Healt
 * Compare LASSO regression, Ridge regression, and Elastic net regression to identify the regularized regression model that will perform the best to predict the premium price for the health insurance data.
 * Perform Principal Component Analysis (PCA), K-Mean's clustering and XGBoost classifier to create the decision tree to determine one’s diabetes status. 
 
-### 1. Introduction
+## 1. Introduction
 
 In the domain of health insurance, a variety of factors influence a customer’s premium price (cost of insurance), and the process of setting premium prices is typically carried out by the pricing and underwriting department [1]. As data is more accessible and easily stored, the healthcare industry generates a large amount of data related to patients, diseases, and diagnoses, but this data has not been properly analyzed, leading to a lack of understanding of its significance and its potential impact on patient healthcare costs. Since there are several factors that can affect the cost of healthcare or insurance, it is important for a variety of stakeholders and health departments to accurately predict individual healthcare expenses using prediction models. The goal of this project is to properly analyze the patient’s data to design models to accurately predict the premium price and also observe significant characteristics of the data.
 
-### 2. Data Preparation
+## 2. Data Preparation
 
 The data was retrieved from Kaggle and has a total dimension of 1000 rows and 11 columns. Each row represents a customer of the insurance, and each column represents various features that describe a customer. The features include: age, presence of diabetes, blood pressure issues, transplant history, chronic disease history, height, weight, known allergies, cancer in the family history, number of major surgeries, and the premium price.
 Fortunately, the data did not contain any missing values or null values, hence there was no need for handling any missing values. Upon using a box plot to observe any noticeable outliers, we could not detect any presence of outliers in the data. We normalized the non-categorical features for faster computation as well as easier comparison and interpretability. To eliminate any unnecessary features, we conducted LASSO regression, and it turned out that none of the coefficients turned out to be zero, thus we kept all features.
 
-### 3. Inference
+## 3. Inference
 
 Parsed the data to create two distinct distributions per each of the four features based on the premium price. Then, we conducted the power analysis by setting the desired power to be 0.8, significance level to be .05, finding the effect size of the two distributions, and determining whether we have adequate sample sizes. Then, computed hypothesis testing using the Welch’s t-test since the variance between the two groups are different and that we compare scores between two different groups.
 
 Looking at Figure 1, the mean premium price for the two distributions are far apart, without any overlaps of the confidence intervals. After conducting Welch's t-test on distributions of ages above 50 and below 50, the p-value was 5.584x10-82. Since this value is smaller than the alpha value (.05), we reject the null hypothesis and conclude that age group has influence on the premium price. Similarly, the p-values for Welch’s t-test on distributions of presence of chronic disease (Figure 2) and surgery history (Figure 3) are 1.73x10-13, 1.6x10-11, respectively. For either case, we reject the null hypothesis since the p-values are far less than the alpha level, thus we conclude that presence of chronic disease and surgery history are influential in the premium price.
 
-| ![](/images/age%20distribution.png) | 
+| ![](/images/age_distribution.png) | 
 |:--:| 
 | *Figure 1* |
   
-| ![](/images/chronic%20distribution.png) | 
+| ![](/images/chronic_distribution.png) | 
 |:--:| 
 | *Figure 2* |
 
-| ![](/images/surgery%20distribution.png) | 
+| ![](/images/surgery_distribution.png) | 
 |:--:| 
 | *Figure 3* |
 
-### 4. Regression
+## 4. Regression
 
 We implemented regularized regression models to prevent the "curse of dimensionality" caused by the multivariate yet limited data set. Here, we built the three most popular ones: Lasso Regression, Ridge Regression, and Elastic Net. We then applied GridSearchCV, a type of cross-validation method, to fine-tune each model's parameters. Alpha levels which were between 0.0001 and 20, were tested to find the optimal value.  
 
@@ -56,7 +56,7 @@ We implemented regularized regression models to prevent the "curse of dimensiona
 
 In Figure 6, the coefficient scores for "Age" indicate a high mathematical relationship with the target, "PremiumPrice"; As for "Height," the scores tell us a low correlation with the target in all three models. The R2 value tells us that the predictor variables in the models are able to explain about 60% of the premium prices. The RMSE value means the average deviation between the predicted premium price made by the model and the actual price. To improve the model performance, we tried eliminating the variable "Height" since it has the lowest coefficient score. The R2 and RMSE comparison between the models "with Height" and "without Height" are shown in Figure 4 and Figure 5. The results tell us that there are slight improvements in all three models. Overall, ridge regression has the highest accuracy in predicting Premium Price. 
 
-### 5. Classification
+## 5. Classification
 
 In the previous parts, we explored the relationship between each feature and how to predict premium prices. In this part, we try to answer a different question. With all the given features in the datasets will we be able to determine a person’s diabetes status? 
 
@@ -98,7 +98,7 @@ The optimal classifier consists of features with distinct weights shown below.
 
 From the scatter plot obtained by the KMeans clustering, we see that there exist two groups of people determined by all features except Diabetes which may be used to determine whether or not a person has diabetes. The classification model helps put our assumption to test. However, the area under ROC curve value of 0.6511 implies that our model is not robust enough to corroborate our assumption.
 
-### 6. Conclusion
+## 6. Conclusion
 
 * We concluded that age, chronic disease history, and surgery history are factors that affect the insurance premium price.
 * Out of three possible regularized regression models (Ridge, LASSO, Elastic net), ridge regression resulted in the highest R2 as well as the lowest RMSE values.
