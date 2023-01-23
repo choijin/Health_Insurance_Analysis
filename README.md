@@ -2,7 +2,7 @@
 
 Collorated work with Jin Choi, Shih-Lun Huang, Wei-Han Hsu
 
-This project seeks to answer various questions regarding the healthcare insurance premium data found on [this link](https://www.kaggle.com/datasets/tejashvi14/medical-insurance-premium-prediction).
+Click [this link](https://www.kaggle.com/datasets/tejashvi14/medical-insurance-premium-prediction) to get the data file.
 
 ### Project Overview
 * Conduct power analysis and hypothesis testing to identify any relationship between the premium price and age, surgery history, existence of diabetes, and chronic disease history. 
