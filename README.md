@@ -60,7 +60,7 @@ In the previous parts, we explored the relationship between each feature and how
 
 In order to better cluster the data, we implement principle component analysis to decrease the dimension of the data. First, we center the data by standardizing features with their means and standard deviations. Next, the Kaiser Criterion approach helps us obtain a systematically optimized number of components by setting a threshold of eigenvalues greater than 1.0 (Figure 7).
 
-| ![](/images/pca.png) | 
+| ![](/images/pca_eig.png) | 
 |:--:| 
 | *Figure 7* |
 
@@ -70,7 +70,7 @@ After obtaining the PCA-transformed data, Silhouette Score is implemented to com
 
 To answer the Diabetes Classification question, we apply the XGBoost method to create a decision tree classifier. XGBoost contains a series of hyperparameters. To reach the optimal model without much knowledge regarding the healthcare and insurance industries, we perform the grid search cross-validation of each hyperparameter according to the recommended intervals. 
 
-| ![](/images/pca.png) | 
+| ![](/images/silhouette_score.png) | 
 |:--:| 
 | *Figure 8* |
 
@@ -80,7 +80,7 @@ To answer the Diabetes Classification question, we apply the XGBoost method to c
 
 The optimal classifier consists of features with distinct weights shown below.
 
-| ![](/images/pca.png) | 
+| ![](/images/classification_result.png) | 
 |:--:| 
 | *Figure 10* |
 
