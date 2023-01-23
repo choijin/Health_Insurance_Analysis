@@ -28,24 +28,67 @@ Looking at Figure 1, the mean premium price for the two distributions are far ap
 |:--:| 
 | *Figure 1* |
   
-![](/images/age%20distribution.png)
-*Figure 1*
+| ![](/images/chronic%20distribution.png) | 
+|:--:| 
+| *Figure 2* |
 
-
-
-Figure 2 
-![](/images/chronic%20distribution.png)
-
-Figure 3
-![](/images/surgery%20distribution.png)
+| ![](/images/surgery%20distribution.png) | 
+|:--:| 
+| *Figure 3* |
 
 ## 4. Regression
 
 We implemented regularized regression models to prevent the "curse of dimensionality" caused by the multivariate yet limited data set. Here, we built the three most popular ones: Lasso Regression, Ridge Regression, and Elastic Net. We then applied GridSearchCV, a type of cross-validation method, to fine-tune each model's parameters. Alpha levels which were between 0.0001 and 20, were tested to find the optimal value.  
 
-Figure 4
-![](/images/regression_result.png)
+| ![](/images/regression_result.png) | 
+|:--:| 
+| *Figure 4* |
 
-Figure 5
-![](/images/regression_graph.png)
+| ![](/images/regression_graph.png) | 
+|:--:| 
+| *Figure 5* |
 
+| ![](/images/model_assessment.png) | 
+|:--:| 
+| *Figure 6* |
+
+In Figure 6, the coefficient scores for "Age" indicate a high mathematical relationship with the target, "PremiumPrice"; As for "Height," the scores tell us a low correlation with the target in all three models. The R2 value tells us that the predictor variables in the models are able to explain about 60% of the premium prices. The RMSE value means the average deviation between the predicted premium price made by the model and the actual price. To improve the model performance, we tried eliminating the variable "Height" since it has the lowest coefficient score. The R2 and RMSE comparison between the models "with Height" and "without Height" are shown in Figure 4 and Figure 5. The results tell us that there are slight improvements in all three models. Overall, ridge regression has the highest accuracy in predicting Premium Price. 
+
+## 5. Classification
+
+In the previous parts, we explored the relationship between each feature and how to predict premium prices. In this part, we try to answer a different question. With all the given features in the datasets will we be able to determine a person’s diabetes status? 
+
+In order to better cluster the data, we implement principle component analysis to decrease the dimension of the data. First, we center the data by standardizing features with their means and standard deviations. Next, the Kaiser Criterion approach helps us obtain a systematically optimized number of components by setting a threshold of eigenvalues greater than 1.0 (Figure 7).
+
+| ![](/images/pca.png) | 
+|:--:| 
+| *Figure 7* |
+
+The result shows that the optimal number of principal components is 2, which explains 55.02% of the variance.
+
+After obtaining the PCA-transformed data, Silhouette Score is implemented to compute the optimal number of clusters to apply in the KMeans approach. The result (Figure 7) shows that a clustering model with 2 clusters performs the best with an average silhouette score of 0.405.
+
+To answer the Diabetes Classification question, we apply the XGBoost method to create a decision tree classifier. XGBoost contains a series of hyperparameters. To reach the optimal model without much knowledge regarding the healthcare and insurance industries, we perform the grid search cross-validation of each hyperparameter according to the recommended intervals. 
+
+| ![](/images/pca.png) | 
+|:--:| 
+| *Figure 8* |
+
+| ![](/images/pca.png) | 
+|:--:| 
+| *Figure 9* |
+
+The optimal classifier consists of features with distinct weights shown below.
+
+| ![](/images/pca.png) | 
+|:--:| 
+| *Figure 10* |
+
+From the scatter plot obtained by the KMeans clustering, we see that there exist two groups of people determined by all features except Diabetes which may be used to determine whether or not a person has diabetes. The classification model helps put our assumption to test. However, the area under ROC curve value of 0.6511 implies that our model is not robust enough to corroborate our assumption.
+
+## 6. Conclusion
+
+* We concluded that age, chronic disease history, and surgery history are factors that affect the insurance premium price.
+* Out of three possible regularized regression models (Ridge, LASSO, Elastic net), ridge regression resulted in the highest R2 as well as the lowest RMSE values.
+* In the regression model, the “Age” feature had the highest coefficient value, which meant that age had the closest relationship with the premium price.
+* Clustering result shows that there exists two potential groups regarding the status of diabetes, however, the classification model does not perform well on determining diabetes patients.
