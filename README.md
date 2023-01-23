@@ -78,6 +78,8 @@ After obtaining the PCA-transformed data, Silhouette Score is implemented to com
 
 To answer the Diabetes Classification question, we apply the XGBoost method to create a decision tree classifier. XGBoost contains a series of hyperparameters. To reach the optimal model without much knowledge regarding the healthcare and insurance industries, we perform the grid search cross-validation of each hyperparameter according to the recommended intervals. 
 
+We finalize the model with the following hyperparameters {'colsample_bytree': 0.5, 'gamma': 0, 'learning_rate': 0.01, 'max_depth': 7, 'reg_lambda': 1, 'scale_pos_weight': 1, 'subsample': 0.8} with an area under ROC curve value of  0.6511. The following (Figure 10 and Figure 11)  shows the result of the optimized classifier.
+
 | ![](/images/confusion.png) | 
 |:--:| 
 | *Figure 10* |
