@@ -26,8 +26,8 @@ Looking at Figure 1, the mean premium price for the two distributions are far ap
 
 
   
-  <center>![](/images/age%20distribution.png)</center> 
-  <center>Figure 1</center>
+![](/images/age%20distribution.png)
+*Figure 1*
 
 
 
