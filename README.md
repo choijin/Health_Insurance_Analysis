@@ -32,17 +32,20 @@ Looking at Figure 1, the mean premium price for the two distributions are far ap
   <em><small>Figure 1</small></em>
 </p>
 
+
 <p align="center">
   <img src="/images/chronic_distribution.png" alt="Figure 2">
   <br>
   <em>Figure 2</em>
 </p>
 
+
 <p align="center">
   <img src="/images/surgery_distribution.png" alt="Figure 3">
   <br>
   <em>Figure 3</em>
 </p>
+
 
 ## 4. Regression
 
@@ -54,17 +57,20 @@ We implemented regularized regression models to prevent the "curse of dimensiona
   <em>Figure 4</em>
 </p>
 
+
 <p align="center">
   <img src="/images/regression_graph.png" alt="Figure 5">
   <br>
   <em>Figure 5</em>
 </p>
 
+
 <p align="center">
   <img src="/images/model_assessment.png" alt="Figure 6">
   <br>
   <em>Figure 6</em>
 </p>
+
 
 In Figure 6, the coefficient scores for "Age" indicate a high mathematical relationship with the target, "PremiumPrice"; As for "Height," the scores tell us a low correlation with the target in all three models. The R2 value tells us that the predictor variables in the models are able to explain about 60% of the premium prices. The RMSE value means the average deviation between the predicted premium price made by the model and the actual price. To improve the model performance, we tried eliminating the variable "Height" since it has the lowest coefficient score. The R2 and RMSE comparison between the models "with Height" and "without Height" are shown in Figure 4 and Figure 5. The results tell us that there are slight improvements in all three models. Overall, ridge regression has the highest accuracy in predicting Premium Price. 
 
@@ -80,6 +86,7 @@ In order to better cluster the data, we implement principle component analysis t
   <em>Figure 7</em>
 </p>
 
+
 The result shows that the optimal number of principal components is 2, which explains 55.02% of the variance.
 
 After obtaining the PCA-transformed data, Silhouette Score is implemented to compute the optimal number of clusters to apply in the KMeans approach. The result (Figure 7) shows that a clustering model with 2 clusters performs the best with an average silhouette score of 0.405.
@@ -90,11 +97,13 @@ After obtaining the PCA-transformed data, Silhouette Score is implemented to com
   <em>Figure 8</em>
 </p>
 
+
 <p align="center">
   <img src="/images/pca.png" alt="Figure 9">
   <br>
   <em>Figure 9</em>
 </p>
+
 
 To answer the Diabetes Classification question, we apply the XGBoost method to create a decision tree classifier. XGBoost contains a series of hyperparameters. To reach the optimal model without much knowledge regarding the healthcare and insurance industries, we perform the grid search cross-validation of each hyperparameter according to the recommended intervals. 
 
@@ -106,17 +115,20 @@ We finalize the model with the following hyperparameters {'colsample_bytree': 0.
   <em>Figure 10</em>
 </p>
 
+
 <p align="center">
   <img src="/images/roc.png" alt="Figure 11">
   <br>
   <em>Figure 11</em>
 </p>
 
+
 <p align="center">
   <img src="/images/classification_result.png" alt="Figure 12">
   <br>
   <em>Figure 12</em>
 </p>
+
 
 From the scatter plot obtained by the KMeans clustering, we see that there exist two groups of people determined by all features except Diabetes which may be used to determine whether or not a person has diabetes. The classification model helps put our assumption to test. However, the area under ROC curve value of 0.6511 implies that our model is not robust enough to corroborate our assumption.
 
