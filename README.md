@@ -26,51 +26,33 @@ Parsed the data to create two distinct distributions per each of the four featur
 
 Looking at Figure 1, the mean premium price for the two distributions are far apart, without any overlaps of the confidence intervals. After conducting Welch's t-test on distributions of ages above 50 and below 50, the p-value was 5.584x10-82. Since this value is smaller than the alpha value (.05), we reject the null hypothesis and conclude that age group has influence on the premium price. Similarly, the p-values for Welch’s t-test on distributions of presence of chronic disease (Figure 2) and surgery history (Figure 3) are 1.73x10-13, 1.6x10-11, respectively. For either case, we reject the null hypothesis since the p-values are far less than the alpha level, thus we conclude that presence of chronic disease and surgery history are influential in the premium price.
 
-<p align="center">
-  <img src="/images/age_distribution.png" alt="Figure 1">
-  <br>
-  <em><small>Figure 1</small></em>
-</p>
+| ![](/images/age_distribution.png) | 
+|:--:| 
+| *Figure 1* |
+  
+| ![](/images/chronic_distribution.png) | 
+|:--:| 
+| *Figure 2* |
 
-
-<p align="center">
-  <img src="/images/chronic_distribution.png" alt="Figure 2">
-  <br>
-  <em>Figure 2</em>
-</p>
-
-
-<p align="center">
-  <img src="/images/surgery_distribution.png" alt="Figure 3">
-  <br>
-  <em>Figure 3</em>
-</p>
-
+| ![](/images/surgery_distribution.png) | 
+|:--:| 
+| *Figure 3* |
 
 ## 4. Regression
 
 We implemented regularized regression models to prevent the "curse of dimensionality" caused by the multivariate yet limited data set. Here, we built the three most popular ones: Lasso Regression, Ridge Regression, and Elastic Net. We then applied GridSearchCV, a type of cross-validation method, to fine-tune each model's parameters. Alpha levels which were between 0.0001 and 20, were tested to find the optimal value.  
 
-<p align="center">
-  <img src="/images/regression_result.png" alt="Figure 4">
-  <br>
-  <em>Figure 4</em>
-</p>
+| ![](/images/regression_result.png) | 
+|:--:| 
+| *Figure 4* |
 
+| ![](/images/regression_graph.png) | 
+|:--:| 
+| *Figure 5* |
 
-<p align="center">
-  <img src="/images/regression_graph.png" alt="Figure 5">
-  <br>
-  <em>Figure 5</em>
-</p>
-
-
-<p align="center">
-  <img src="/images/model_assessment.png" alt="Figure 6">
-  <br>
-  <em>Figure 6</em>
-</p>
-
+| ![](/images/model_assessment.png) | 
+|:--:| 
+| *Figure 6* |
 
 In Figure 6, the coefficient scores for "Age" indicate a high mathematical relationship with the target, "PremiumPrice"; As for "Height," the scores tell us a low correlation with the target in all three models. The R2 value tells us that the predictor variables in the models are able to explain about 60% of the premium prices. The RMSE value means the average deviation between the predicted premium price made by the model and the actual price. To improve the model performance, we tried eliminating the variable "Height" since it has the lowest coefficient score. The R2 and RMSE comparison between the models "with Height" and "without Height" are shown in Figure 4 and Figure 5. The results tell us that there are slight improvements in all three models. Overall, ridge regression has the highest accuracy in predicting Premium Price. 
 
@@ -80,55 +62,39 @@ In the previous parts, we explored the relationship between each feature and how
 
 In order to better cluster the data, we implement principle component analysis to decrease the dimension of the data. First, we center the data by standardizing features with their means and standard deviations. Next, the Kaiser Criterion approach helps us obtain a systematically optimized number of components by setting a threshold of eigenvalues greater than 1.0 (Figure 7).
 
-<p align="center">
-  <img src="/images/pca_eig.png" alt="Figure 7">
-  <br>
-  <em>Figure 7</em>
-</p>
-
+| ![](/images/pca_eig.png) | 
+|:--:| 
+| *Figure 7* |
 
 The result shows that the optimal number of principal components is 2, which explains 55.02% of the variance.
 
 After obtaining the PCA-transformed data, Silhouette Score is implemented to compute the optimal number of clusters to apply in the KMeans approach. The result (Figure 7) shows that a clustering model with 2 clusters performs the best with an average silhouette score of 0.405.
 
-<p align="center">
-  <img src="/images/silhouette_score.png" alt="Figure 8">
-  <br>
-  <em>Figure 8</em>
-</p>
+| ![](/images/silhouette_score.png) | 
+|:--:| 
+| *Figure 8* |
 
-
-<p align="center">
-  <img src="/images/pca.png" alt="Figure 9">
-  <br>
-  <em>Figure 9</em>
-</p>
-
+| ![](/images/pca.png) | 
+|:--:| 
+| *Figure 9* |
 
 To answer the Diabetes Classification question, we apply the XGBoost method to create a decision tree classifier. XGBoost contains a series of hyperparameters. To reach the optimal model without much knowledge regarding the healthcare and insurance industries, we perform the grid search cross-validation of each hyperparameter according to the recommended intervals. 
 
 We finalize the model with the following hyperparameters {'colsample_bytree': 0.5, 'gamma': 0, 'learning_rate': 0.01, 'max_depth': 7, 'reg_lambda': 1, 'scale_pos_weight': 1, 'subsample': 0.8} with an area under ROC curve value of  0.6511. The following (Figure 10 and Figure 11)  shows the result of the optimized classifier.
 
-<p align="center">
-  <img src="/images/confusion.png" alt="Figure 10">
-  <br>
-  <em>Figure 10</em>
-</p>
+| ![](/images/confusion.png) | 
+|:--:| 
+| *Figure 10* |
 
+| ![](/images/roc.png) | 
+|:--:| 
+| *Figure 11* |
 
-<p align="center">
-  <img src="/images/roc.png" alt="Figure 11">
-  <br>
-  <em>Figure 11</em>
-</p>
+The optimal classifier consists of features with distinct weights shown below.
 
-
-<p align="center">
-  <img src="/images/classification_result.png" alt="Figure 12">
-  <br>
-  <em>Figure 12</em>
-</p>
-
+| ![](/images/classification_result.png) | 
+|:--:| 
+| *Figure 12* |
 
 From the scatter plot obtained by the KMeans clustering, we see that there exist two groups of people determined by all features except Diabetes which may be used to determine whether or not a person has diabetes. The classification model helps put our assumption to test. However, the area under ROC curve value of 0.6511 implies that our model is not robust enough to corroborate our assumption.
 
@@ -139,4 +105,4 @@ From the scatter plot obtained by the KMeans clustering, we see that there exist
 * In the regression model, the “Age” feature had the highest coefficient value, which meant that age had the closest relationship with the premium price.
 * Clustering result shows that there exists two potential groups regarding the status of diabetes, however, the classification model does not perform well on determining diabetes patients.
 
-During the analysis, there were few assumptions that were made which could potentially affect the outcome of our analysis. First, we made the assumption that the relationship between the features and the independent variable is linear, but it is very possible that the relationship is non-linear (i.e. polynomial). Also, we made the assumption that the data retrieved for this project had no biased sampling. Particularly, we assumed that there were no other confounding variables which could have impacted the result. Finally, our assumption that these premium prices are of the same insurance plan draws significant limitations to our prediction as different insurance plans offer various coverages, hence, a distinct underlying pricing model for each plan. To mitigate some of the assumptions, we could gather data using stratified sampling, where we create multiple categories or subgroups in which the confounding variables do not vary much, and survey the patients.
+During the analysis, there were few assumptions that were made which could potentially affect the outcome of our analysis. First, we made the assumption that the relationship between the features and the independent variable is linear, but it is very possible that the relationship is non-linear (i.e. polynomial). Also, we made the assumption that the data retrieved for this project had no biased sampling. Particularly, we assumed that there were no other confounding variables which could have impacted the result. Finally, our assumption that these premium prices are of the same insurance plan draws significant limitations to our prediction as different insurance plans offer various coverages, hence, a distinct underlying pricing model for each plan. To mitigate some of the assumptions, we could gather data using stratified sampling, where we create multiple categories or subgroups in which the confounding variables do not vary much, and survey the patients. 
